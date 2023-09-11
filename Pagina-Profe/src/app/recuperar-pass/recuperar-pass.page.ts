@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recuperar-pass',
@@ -11,6 +11,7 @@ export class RecuperarPassPage implements OnInit {
   constructor(
     private alertController:AlertController,
     private router:Router,
+    public menuCtrl:MenuController,
   ) { }
   usuario={
     username:''
@@ -56,5 +57,11 @@ export class RecuperarPassPage implements OnInit {
     await alert.present();
 
  
+  }
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false)
+  }
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true)
   }
 }
