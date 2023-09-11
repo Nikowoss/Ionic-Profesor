@@ -16,6 +16,7 @@ export class GenerarQrPage implements OnInit {
   onClick(){
     this.menu.toggle();
   }
+  
 
 }
 
