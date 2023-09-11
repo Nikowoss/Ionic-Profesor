@@ -1,0 +1,19 @@
+<ion-app>
+  <ion-menu side="start" menuId="menu" contentId="main">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle autoHide="true">
+          <ion-item routerLink="/generar-qr"><ion-icon name="qr-code-sharp" slot="start" color="dark"></ion-icon> Generar Qr</ion-item>
+          <ion-item routerLink="/perfil"><ion-icon name="person-sharp" slot="start" color="dark"></ion-icon> Perfil</ion-item>
+          <ion-item routerLink="/"><ion-icon name="log-out-sharp" slot="start" color="dark"></ion-icon> Cerrar sesion</ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>
