@@ -22,7 +22,7 @@ export class RecuperarPassPage implements OnInit {
   {
     if (this.usuario.username=="nico"){
       this.presentAlertAA()
-      this.router.navigate(['/inicio-pagina-web'])
+      this.router.navigate(['/'])
     }
     else{
       
