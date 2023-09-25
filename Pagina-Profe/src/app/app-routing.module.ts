@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'recuperar-pass',
     loadChildren: () => import('./recuperar-pass/recuperar-pass.module').then( m => m.RecuperarPassPageModule)
   },
+  {
+    path: 'cursos',
+    loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -8,15 +9,34 @@ import { MenuController } from '@ionic/angular';
 })
 export class GenerarQrPage implements OnInit {
 
-  constructor(private menu:MenuController) { }
+  constructor(private menu: MenuController,private router:Router) { }
 
   ngOnInit() {
   }
 
-  onClick(){
+  onClick() {
     this.menu.toggle();
   }
-  
+
+  ionViewDidEnter() {
+    this.menu.enable(false)
+  }
+  ionViewWillLeave() {
+    this.menu.enable(true)
+  }
+  public alertButtons = [
+    {
+      text: 'Cancelar',
+      role: 'cancel',
+    },
+    {
+      text: 'Si',
+      role: 'confirm',
+      handler: () => {
+        this.router.navigate(['/cursos']);
+      },
+    },
+  ];
 
 }
 

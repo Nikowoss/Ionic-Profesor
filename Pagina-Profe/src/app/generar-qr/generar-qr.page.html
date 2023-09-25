@@ -1,9 +1,8 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
-      <ion-menu-button menu="menu"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Generar QR</ion-title>
+    <ion-title style="text-align: center;">[Nombre del curso]  [Seccion del curso]</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,11 +12,15 @@
       <ion-row>
         <ion-col sizeXl="3" sizeSm="3"></ion-col>
         <ion-col sizeXl="6" sizeSm="6" style="margin-top: 20px;">
-          <ion-icon name="qr-code-outline" style="font-size: 200px; color: white;"></ion-icon>
-
-          <ion-button style="margin-top: 20px;" expand="full" fill="solid" shape="round" color="tertiary" type="submit">
-            Generar Qr
+          <ion-icon name="qr-code-outline" style="font-size: 300px; color: white;"></ion-icon>
+          <ion-button id="cerrar" expand="full" fill="solid" shape="round" color="tertiary" style="margin-top: 30px;">
+            Cerrar asistencia
           </ion-button>
+          <ion-alert trigger="cerrar" header="¿Estas seguro de cerrar esta clase?" [buttons]="alertButtons"></ion-alert>
+          <ion-button id="eliminar" expand="full" fill="solid" shape="round" color="tertiary" style="margin-top: 30px;">
+            Eliminar clase
+          </ion-button>
+          <ion-alert trigger="eliminar" header="¿Estas seguro de eliminar la clase?" [buttons]="alertButtons"></ion-alert>
         </ion-col>
         <ion-col sizeXl="3" sizeSm="3"></ion-col>
       </ion-row>
