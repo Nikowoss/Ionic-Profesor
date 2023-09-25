@@ -30,7 +30,6 @@ export class PerfilPage implements OnInit {
 
   onSubmit() {
     if (this.valid_pass.pass1 == this.valid_pass.pass2) {
-      this.router.navigate(['/generar-qr'])
     }
     else {
 
