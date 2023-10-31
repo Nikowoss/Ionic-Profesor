@@ -1,6 +1,8 @@
+import { Usuario } from './../interfaces/usuario';
 import { Component,OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +11,16 @@ import { AlertController, MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  usuario={
-   username:'',
-   password:''
+  usuario:Usuario={
+    email:'',
+    password:''
   }
  
    constructor(
      private router:Router,
      private alertController:AlertController,
      public menuCtrl:MenuController,
+     private storage: Storage
      ) { }
  
    ngOnInit() {
@@ -25,15 +28,32 @@ export class HomePage implements OnInit {
  
    onSubmit()
    {
-     if (this.usuario.username=="nico" && this.usuario.password=="nico"){
-       this.router.navigate(['/cursos'])
-     }
-     else{
+     if (this.usuario.email=="nico" && this.usuario.password=="nico"){
        
-       this.presentAlert()
-     }
- 
-   }
+       this.activar(1);
+      //console.log("Listo!!!!");
+      let ext:NavigationExtras={
+        state:{
+          credenciales:this.usuario,
+          saludo:"Hola mundo!!!",
+          
+        }
+      }
+
+      this.router.navigate(['/cursos'],ext)
+    }
+    else{
+      this.activar(0);
+      this.presentAlert()
+    }
+  }
+
+
+  async activar(valor:Number)
+  {
+    await this.storage.set("sesion",valor);
+  }
+
  
  
    async presentAlert() {
@@ -56,4 +76,5 @@ export class HomePage implements OnInit {
    ionViewWillLeave() {
      this.menuCtrl.enable(true)
    }
+   
  }

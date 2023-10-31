@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ControlAccesoGuard } from './guards/control-acceso.guard';
 
 const routes: Routes = [
   {
@@ -13,11 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'generar-qr',
-    loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule)
+    loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule),
+    canActivate:[ControlAccesoGuard]
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate:[ControlAccesoGuard]
   },
   {
     path: 'recuperar-pass',
@@ -25,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'cursos',
-    loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule)
+    loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule),
+    canActivate:[ControlAccesoGuard]
   },
 ];
 
